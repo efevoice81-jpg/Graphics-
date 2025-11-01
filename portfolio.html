@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css_style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <title>Portfolio | E.V Creative Media</title>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">E.V Creative Media</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Our Work</h1>
+            <p>We're proud of what we create. Take a look at some of our best projects.</p>
+        </section>
+
+        <section class="portfolio-grid">
+            <div class="portfolio-item" data-modal-target="modal-1">
+                <img src="dean.jpg">
+            </div>
+            <div class="portfolio-item" data-modal-target="modal-2">
+                <img src="nu.jpg">
+            </div>
+            <div class="portfolio-item" data-modal-target="modal-3">
+                <img src="nov.jpg">
+            </div>
+            <div class="portfolio-item" data-modal-target="modal-4">
+                <img src="copy.jpg">
+            </div>
+            </section>
+    </main>
+
+    <div class="modal" id="modal-1">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="images/project1-large.jpg" alt="Large view of Project 1">
+            <h2>Project Title 1: Local Restaurant Branding</h2>
+            <p>This was a complete branding package for a new restaurant in Benin City. We developed the logo, menus, and interior design concepts, focusing on a modern yet traditional feel.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-2">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="images/project2-large.jpg" alt="Large view of Project 2">
+            <h2>Project Title 2: E-commerce Website</h2>
+            <p>A full web design and build for a local fashion retailer. We used bold colors and clean typography to create a high-converting online store.</p>
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <p>&copy; 2025 E.V Creative Media. All Rights Reserved.</p>
+
+    </footer>
+
+    <script src="js/efe.js"></script>
+</body>
+This too 
+</html>
