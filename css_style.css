@@ -1,0 +1,511 @@
+/* ========================================
+    1. GLOBAL SETUP & VARIABLES
+========================================
+*/
+
+:root {
+  /* ======== COLORS ======== */
+  --primary-blue: #0A2463;  /* Deep, confident blue for backgrounds, text */
+  --secondary-blue: #3E92CC; /* Brighter blue for accents, cards */
+  --accent-orange: #FF6700;  /* Bold orange for all buttons and links */
+  --dark-text: #222222;      /* For body copy on light backgrounds */
+  --light-text: #F5F5F5;     /* For text on blue backgrounds */
+  --background-light: #FFFFFF;
+
+  /* ======== TYPOGRAPHY ======== */
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--dark-text);
+  background-color: var(--background-light);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; }
+h3 { font-size: 1.5rem; color: var(--primary-blue); }
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+a {
+  color: var(--accent-orange);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Helper class for section padding */
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ========================================
+    2. REUSABLE COMPONENTS
+========================================
+*/
+
+/* The main Call-to-Action button style */
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent-orange);
+  color: var(--light-text);
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: var(--heading-font);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #E05A00; /* Darker orange */
+  transform: translateY(-3px); /* "Lift" effect */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Standard header for About, Services, etc. */
+.page-header {
+  background-color: var(--primary-blue);
+  max-width: 100%; /* Make it full-width */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.page-header h1, .page-header p {
+  color: var(--light-text);
+}
+
+
+/* ========================================
+    3. HEADER & FOOTER
+========================================
+*/
+.main-header {
+  background: var(--background-light);
+  padding: 1rem 2rem;
+  border-bottom: 3px solid var(--primary-blue);
+  position: sticky; /* Makes navbar stay at top */
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.navbar-brand a {
+  font-family: var(--heading-font);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 25px;
+}
+
+.nav-links a {
+  color: var(--dark-text);
+  font-weight: 500;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent; /* For hover effect */
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-orange);
+}
+
+/* Style for the active page link */
+.nav-links a.active {
+  color: var(--accent-orange);
+  font-weight: 700;
+  border-bottom-color: var(--accent-orange);
+}
+
+.main-footer {
+  background: var(--primary-blue);
+  color: var(--light-text);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 40px;
+}
+
+.main-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+    4. HOME PAGE (index.html)
+========================================
+*/
+
+/* Hero section */
+.hero {
+  background-color: var(--primary-blue);
+  /* Use a background image with a dark overlay */
+  background-image: linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.85)), url('../images/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  height: 90vh; /* Takes up most of the screen */
+  max-width: 100%; /* Full width */
+  padding: 0 20px;
+
+  /* Flexbox to center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  color: var(--light-text);
+  font-size: 4rem; /* BOLD */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  color: var(--light-text);
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+/* Featured Work section (Uses Portfolio Grid styles) */
+.featured-work .portfolio-item-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-work .portfolio-item-link:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Services Overview section */
+.services-overview {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  max-width: 100%;
+  background-color: #f4f4f4;
+  padding: 60px 40px;
+}
+
+.service-card-mini {
+  background: var(--background-light);
+  padding: 2rem;
+  border-radius: 8px;
+  flex: 1; /* Each card takes equal space */
+  text-align: center;
+  border-top: 5px solid var(--secondary-blue);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-card-mini h3 {
+  color: var(--primary-blue);
+}
+
+/* ========================================
+    5. SERVICES PAGE (services.html)
+========================================
+*/
+
+.services-grid {
+  display: grid;
+  /* Creates 2 equal columns */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 2rem;
+  border-left: 5px solid var(--accent-orange);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  color: var(--primary-blue);
+}
+
+/* ========================================
+    6. PORTFOLIO PAGE (portfolio.html)
+========================================
+*/
+
+.portfolio-grid {
+  display: grid;
+  /* 3 columns on desktop */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.portfolio-item {
+  cursor: pointer;
+  overflow: hidden; /* Hides the part of the image that scales */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+.portfolio-item:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+/* ========================================
+    7. PORTFOLIO MODAL (Pop-up)
+========================================
+*/
+.modal {
+  display: none; /* Hidden by default (JS will show it) */
+  position: fixed; /* Stays in place */
+  z-index: 1001; /* Sits on top of everything */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Dark overlay */
+  overflow-y: auto; /* Allow scrolling if content is long */
+}
+
+.modal-content {
+  background-color: var(--background-light);
+  margin: 10% auto; /* Center vertically and horizontally */
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  /* Simple animation */
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--dark-text);
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+    8. CONTACT PAGE (contact.html)
+========================================
+*/
+
+.contact-layout {
+  display: flex;
+  gap: 40px;
+}
+
+.contact-form-container,
+.contact-details {
+  flex: 1; /* Each side takes up 50% */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-family: var(--heading-font);
+  color: var(--primary-blue);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary-blue);
+  box-shadow: 0 0 5px rgba(62, 146, 204, 0.5);
+}
+
+.contact-details h3 {
+  color: var(--primary-blue);
+  border-bottom: 3px solid var(--accent-orange);
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.contact-details h3:first-of-type {
+  margin-top: 0;
+}
+
+.contact-details p {
+  font-size: 1.1rem;
+}
+
+.map-embed iframe {
+  border-radius: 8px;
+  margin-top: 1rem;
+  width: 100%;
+  height: 250px;
+  border: 0;
+}
+
+
+/* ========================================
+    9. RESPONSIVENESS (Media Queries)
+========================================
+*/
+
+/* For tablets and small desktops */
+@media (max-width: 992px) {
+  h1 { font-size: 2.8rem; }
+  .hero-content h1 { font-size: 3.2rem; }
+  
+  .services-grid {
+    grid-template-columns: 1fr; /* Stack service cards */
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+  /* This is where you would add JS for a hamburger menu */
+  /* For now, we'll just stack the nav */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .nav-links li {
+    margin: 5px 0;
+    width: 100%;
+  }
+  .nav-links a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: #f4f4f4;
+  }
+  
+  .hero {
+    height: 70vh;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .services-overview {
+    flex-direction: column; /* Stack mini service cards */
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+
+  .contact-layout {
+    flex-direction: column; /* Stack contact form and details */
+  }
+}
